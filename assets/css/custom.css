@@ -1,0 +1,893 @@
+/* ==========================================================================
+   Non-Destructive Background Texture Recoloring & Scroll-Driven Animations
+   ========================================================================== */
+
+/* 1. Base Page Background */
+html,
+body,
+.framer-A4SHU.framer-faqwma,
+.framer-1BJhI.framer-1e77eq1 {
+  background-color: #F5EDDE !important;
+  overflow-x: clip;
+}
+
+/* 2. Hide Demo-Only "Buy Now INR 3999" Button and Watermarks */
+.framer-A4SHU .framer-ise8hm,
+.framer-A4SHU .framer-1js350o,
+.framer-A4SHU .framer-1x5ulp2,
+.framer-A4SHU .framer-4jy5nc,
+.framer-A4SHU .framer-1wsqbdk,
+.framer-A4SHU .framer-eaa7zg,
+.framer-A4SHU .framer-1h1kx49,
+.framer-A4SHU .framer-5jxo2n,
+.framer-A4SHU .framer-1lyzvr1,
+.framer-A4SHU .framer-1h6htic,
+.framer-A4SHU .framer-zrp01p,
+.framer-A4SHU .framer-4ygosz {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* 3. Non-Destructive Background Texture Recoloring */
+/* Section 2 Damask Texture Background */
+.framer-A4SHU .framer-1lew6c4 > [data-framer-background-image-wrapper="true"] > img {
+  filter: url(#recolor-section2-bg);
+  -webkit-filter: url(#recolor-section2-bg);
+}
+
+/* 4. Harmonized Typography Contrast in Section 2 */
+.framer-A4SHU .framer-qt0921 .framer-11qrzzs .framer-text,
+.framer-A4SHU .framer-rsjser .framer-text {
+  --framer-text-color: rgb(107, 86, 46) !important;
+  --extracted-r6o4lv: rgb(107, 86, 46) !important;
+  --extracted-a0htzi: rgb(107, 86, 46) !important;
+  --extracted-1of0zx5: rgb(107, 86, 46) !important;
+  color: rgb(107, 86, 46) !important;
+}
+
+/* Pulsing concentric circle button in Section 2 */
+.framer-A4SHU .framer-rsjser [data-border="true"] {
+  --border-color: rgb(107, 86, 46) !important;
+}
+
+/* 5. Keep Main Wedding Couple Illustration Stationary on Load */
+.framer-A4SHU .framer-wva5fq,
+.framer-A4SHU .framer-1o4ssdi,
+.framer-A4SHU .framer-1hhl4i8,
+.framer-A4SHU .framer-1gkd8xc {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* 6. Scroll-Driven Animation Rules */
+.framer-A4SHU [data-framer-name="Lantern"] {
+  transform: translate3d(var(--lantern-x, 0px), var(--lantern-y, 0px), 0px) rotate(var(--lantern-rot, 0deg)) !important;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.framer-A4SHU .framer-1okdoe3,
+.framer-A4SHU .framer-xecmds,
+.framer-A4SHU .framer-1h9vu7t {
+  transform: translate3d(var(--car-x, -50%), var(--car-y, 0px), 0px) scale(var(--car-scale, 1)) !important;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+.framer-A4SHU .framer-1j9tghe,
+.framer-A4SHU .framer-rsjser,
+.framer-A4SHU .framer-1da0w34 {
+  transform: translate3d(0px, var(--cta-y, 0px), 0px) !important;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .framer-A4SHU [data-framer-name="Lantern"] {
+    transform: rotate(var(--lantern-rot, 0deg)) !important;
+  }
+  .framer-A4SHU .framer-1okdoe3,
+  .framer-A4SHU .framer-xecmds,
+  .framer-A4SHU .framer-1h9vu7t {
+    transform: translate3d(var(--car-x, -50%), 0px, 0px) !important;
+  }
+  .framer-A4SHU .framer-1j9tghe,
+  .framer-A4SHU .framer-rsjser,
+  .framer-A4SHU .framer-1da0w34 {
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   Section 3: Event Cards (Haldi, Mehendi, Shaadi, Vidai) with Golden Baroque Frames
+   ========================================================================== */
+
+/* Section 3 container height adjustment */
+.framer-A4SHU .framer-1dnsgee {
+  height: auto !important;
+  min-height: 1400px !important;
+  padding-bottom: 120px !important;
+}
+
+/* 1. Hide removed events: Cocktail, Engagement, Reception */
+.framer-A4SHU .framer-1enno0k-container,
+.framer-A4SHU .framer-1nq95ds-container,
+.framer-A4SHU .framer-168qk3e-container,
+.framer-A4SHU .framer-1y7n9xn-container {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 2. Hide old cane border and flower stickers */
+.framer-A4SHU .framer-1jsbovf,
+.framer-A4SHU .framer-1bxsn5c,
+.framer-A4SHU .framer-18uolka,
+.framer-A4SHU .framer-1hwc4m2,
+.framer-A4SHU .framer-1u1ui3e,
+.framer-A4SHU .framer-j2vp8w {
+  display: none !important;
+}
+
+/* 3. Golden Baroque Frames for Desktop and Mobile Event Cards */
+/* Haldi */
+.framer-A4SHU .framer-1pcxfo0-container .framer-1qbbag,
+.framer-A4SHU .framer-1hlgref-container .framer-1v6so7i {
+  background-image: url('../images/event_haldi.png') !important;
+}
+
+/* Mehendi */
+.framer-A4SHU .framer-15luf3w-container .framer-1qbbag,
+.framer-A4SHU .framer-17pfcdz-container .framer-1v6so7i {
+  background-image: url('../images/event_mehendi.png') !important;
+}
+
+/* Shaadi */
+.framer-A4SHU .framer-1tyu4ov-container .framer-1qbbag,
+.framer-A4SHU .framer-1a7uxhk-container .framer-1v6so7i {
+  background-image: url('../images/event_shaadi.png') !important;
+}
+
+/* Vidai */
+.framer-A4SHU .framer-1skxlxn-container .framer-1qbbag,
+.framer-A4SHU .framer-15viu27-container .framer-1v6so7i {
+  background-image: url('../images/event_vidai.png') !important;
+}
+
+/* Golden frame container sizing & rendering */
+.framer-A4SHU .framer-1qbbag,
+.framer-A4SHU .framer-1v6so7i {
+  width: 280px !important;
+  height: 380px !important;
+  margin: 0 auto !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center top !important;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2)) !important;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.framer-A4SHU .framer-1qbbag:hover,
+.framer-A4SHU .framer-1v6so7i:hover {
+  transform: translateY(-4px) scale(1.02);
+  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.45)) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25)) !important;
+}
+
+/* 4. Position Event Details (Title, Date, Venue, Time, Map) Below the Golden Frame */
+.framer-A4SHU .framer-m63v3r,
+.framer-A4SHU .framer-1jdcvq6 {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  margin-top: 14px !important;
+  padding: 0 10px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+}
+
+/* Event Title (Haldi, Mehendi, Shaadi, Vidai) */
+.framer-A4SHU .framer-g9i46y,
+.framer-A4SHU .framer-d9o4fp {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.framer-A4SHU .framer-g9i46y .framer-text,
+.framer-A4SHU .framer-d9o4fp .framer-text {
+  font-family: 'Aboreto', 'Cormorant Upright', serif !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  color: #FFF2CC !important;
+  --extracted-r6o4lv: #FFF2CC !important;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45) !important;
+  margin: 0 !important;
+  text-align: center !important;
+}
+
+/* Mobile middle wrapper */
+.framer-A4SHU .framer-6bsqeg {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 10px !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Date, Venue, Time container */
+.framer-A4SHU .framer-t1jxj4,
+.framer-A4SHU .framer-zshh5a,
+.framer-A4SHU .framer-1ag4aq {
+  width: 100% !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.framer-A4SHU .framer-1sgjtqj,
+.framer-A4SHU .framer-1e7d0g4 {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 4px !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Date Text */
+.framer-A4SHU .framer-pu2ys3,
+.framer-A4SHU .framer-inj5oz,
+.framer-A4SHU .framer-12t9k8p {
+  width: 100% !important;
+  height: auto !important;
+  text-align: center !important;
+}
+
+.framer-A4SHU .framer-pu2ys3 .framer-text,
+.framer-A4SHU .framer-inj5oz .framer-text,
+.framer-A4SHU .framer-12t9k8p .framer-text {
+  font-family: 'Cormorant', 'Cormorant Infant', serif !important;
+  font-size: 19px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  color: #FFFFFF !important;
+  --extracted-r6o4lv: #FFFFFF !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5) !important;
+  text-align: center !important;
+}
+
+/* Venue Text */
+.framer-A4SHU .framer-1483yro,
+.framer-A4SHU .framer-1lwecf7,
+.framer-A4SHU .framer-16k1w6q {
+  width: 100% !important;
+  height: auto !important;
+  text-align: center !important;
+}
+
+.framer-A4SHU .framer-1483yro .framer-text,
+.framer-A4SHU .framer-1lwecf7 .framer-text,
+.framer-A4SHU .framer-16k1w6q .framer-text {
+  font-family: 'Cormorant', 'Cormorant Infant', serif !important;
+  font-size: 17px !important;
+  font-style: italic !important;
+  color: #F7E7CE !important;
+  --extracted-r6o4lv: #F7E7CE !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5) !important;
+  text-align: center !important;
+}
+
+/* Time Text */
+.framer-A4SHU .framer-13vse8w,
+.framer-A4SHU .framer-g4ggot,
+.framer-A4SHU .framer-h9u9s6 {
+  width: 100% !important;
+  height: auto !important;
+  text-align: center !important;
+}
+
+.framer-A4SHU .framer-13vse8w .framer-text,
+.framer-A4SHU .framer-g4ggot .framer-text,
+.framer-A4SHU .framer-h9u9s6 .framer-text {
+  font-family: 'Cormorant', 'Cormorant Infant', serif !important;
+  font-size: 17px !important;
+  font-weight: 600 !important;
+  color: #FFF2CC !important;
+  --extracted-r6o4lv: #FFF2CC !important;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5) !important;
+  text-align: center !important;
+}
+
+/* "See the route" Button Styling */
+.framer-A4SHU .framer-da9rad,
+.framer-A4SHU .framer-1hdt68x,
+.framer-A4SHU .framer-1drtq1g,
+.framer-A4SHU .framer-udt5ln,
+.framer-A4SHU .framer-4c1737 {
+  width: auto !important;
+  height: auto !important;
+  margin-top: 6px !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.framer-A4SHU .framer-da9rad a,
+.framer-A4SHU .framer-1hdt68x a,
+.framer-A4SHU .framer-styles-preset-s3v1ib {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 8px 24px !important;
+  font-family: 'Cormorant', serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  color: #241D0E !important;
+  background: linear-gradient(135deg, #FFE599 0%, #D4AF37 50%, #AA820A 100%) !important;
+  border: 1px solid rgba(255, 235, 170, 0.8) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  transition: all 0.25s ease !important;
+}
+
+.framer-A4SHU .framer-da9rad a:hover,
+.framer-A4SHU .framer-1hdt68x a:hover,
+.framer-A4SHU .framer-styles-preset-s3v1ib:hover {
+  background: linear-gradient(135deg, #FFF0B8 0%, #E6C24E 50%, #C29618 100%) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), inset 0 1px 2px rgba(255, 255, 255, 0.8) !important;
+  transform: translateY(-2px) scale(1.03) !important;
+}
+
+/* 5. Desktop Layout: Symmetrical 2x2 Grid for 4 Cards */
+@media (min-width: 810px) {
+  .framer-A4SHU .framer-1ciffqa {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: flex-start !important;
+    gap: 40px 70px !important;
+    max-width: 860px !important;
+    margin: 30px auto 60px auto !important;
+    height: auto !important;
+  }
+
+  .framer-A4SHU .framer-1pcxfo0-container,
+  .framer-A4SHU .framer-15luf3w-container,
+  .framer-A4SHU .framer-1tyu4ov-container,
+  .framer-A4SHU .framer-1skxlxn-container {
+    width: 350px !important;
+    height: auto !important;
+    min-height: 550px !important;
+    flex: none !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .framer-A4SHU .framer-7newsy {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .framer-A4SHU .framer-OoRGL {
+    height: auto !important;
+    min-height: 550px !important;
+  }
+}
+
+/* 6. Mobile Layout: Centered Vertical Stack with Elegant Spacing */
+@media (max-width: 809.98px) {
+  .framer-A4SHU .framer-1sv58s4 {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 45px !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 10px 10px 60px 10px !important;
+  }
+
+  .framer-A4SHU .framer-1hlgref-container,
+  .framer-A4SHU .framer-17pfcdz-container,
+  .framer-A4SHU .framer-1a7uxhk-container,
+  .framer-A4SHU .framer-15viu27-container {
+    width: 100% !important;
+    max-width: 340px !important;
+    height: auto !important;
+    min-height: 540px !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .framer-A4SHU .framer-1ykmldp {
+    width: 100% !important;
+    height: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+
+  .framer-A4SHU .framer-wJa2M {
+    height: auto !important;
+    min-height: 540px !important;
+  }
+}
+/* ==========================================================================
+   Tighten Spacing around RSVP & Slideshow (Remove Excess Dead Space)
+   ========================================================================== */
+.framer-A4SHU .framer-qt0921 {
+  padding-bottom: 25px !important;
+}
+
+@media (max-width: 809.98px) {
+  .framer-A4SHU .framer-qt0921 {
+    padding-bottom: 15px !important;
+  }
+}
+
+.framer-A4SHU .framer-1lew6c4 {
+  padding-bottom: 50px !important;
+}
+
+@media (max-width: 809.98px) {
+  .framer-A4SHU .framer-1lew6c4 {
+    padding-bottom: 30px !important;
+  }
+}
+
+.framer-A4SHU .framer-rsjser {
+  position: relative !important;
+  top: 0 !important;
+  transform: none !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: min-content !important;
+  padding-top: 10px !important;
+  padding-bottom: 25px !important;
+}
+
+@media (max-width: 809.98px) {
+  .framer-A4SHU .framer-rsjser {
+    padding-top: 0px !important;
+    padding-bottom: 15px !important;
+  }
+}
+
+/* Hide old ellipse button and duplicate text inside #rsvp */
+.framer-A4SHU .framer-rsjser .framer-hw9qw5-container,
+.framer-A4SHU .framer-rsjser .framer-1xcfkmu-container {
+  display: none !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+
+.rsvp-envelope-wrapper {
+  position: relative !important;
+  width: 440px !important;
+  max-width: 92vw !important;
+  height: 590px !important;
+  margin: 10px auto 20px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-end !important;
+  perspective: 1000px !important;
+  box-sizing: border-box !important;
+  user-select: none !important;
+  /* Crucial: Clip bottom so card NEVER extends below envelope bottom! */
+  clip-path: inset(-800px 0px 0px 0px) !important;
+}
+
+@media (max-width: 809.98px) {
+  .rsvp-envelope-wrapper {
+    width: 340px !important;
+    max-width: 92vw !important;
+    height: 468px !important;
+    margin: 0 auto 10px !important;
+  }
+}
+
+/* Layer 1: Envelope Inner (Back & top interior floral flap) */
+.rsvp-envelope-inner {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 938 / 1290 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.rsvp-envelope-inner img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.28)) !important;
+}
+
+/* Layer 2: Sliding Paper Card */
+.rsvp-paper-card {
+  position: absolute !important;
+  bottom: 16px !important;
+  left: 50% !important;
+  width: 82% !important;
+  max-width: 350px !important;
+  aspect-ratio: 1237 / 1586 !important;
+  z-index: 2 !important;
+  transform: translate3d(-50%, var(--envelope-card-y, -175px), 0) !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32) !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: block !important;
+  overflow: hidden !important;
+  transition: box-shadow 0.25s ease, filter 0.25s ease !important;
+}
+
+@media (max-width: 809.98px) {
+  .rsvp-paper-card {
+    width: 83% !important;
+    bottom: 12px !important;
+  }
+}
+
+.rsvp-paper-card:hover {
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45) !important;
+  filter: brightness(1.02) !important;
+}
+
+.rsvp-paper-bg {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.rsvp-paper-content {
+  position: relative !important;
+  z-index: 2 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 30px 16px 16px !important;
+  box-sizing: border-box !important;
+  text-align: center !important;
+}
+
+@media (max-width: 809.98px) {
+  .rsvp-paper-content {
+    padding: 22px 12px 14px !important;
+  }
+}
+
+.rsvp-paper-heading {
+  font-family: 'Aboreto', sans-serif !important;
+  font-size: 24px !important;
+  line-height: 1.15 !important;
+  letter-spacing: 0.12em !important;
+  color: #4a2846 !important;
+  margin: 0 0 5px 0 !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+}
+
+@media (max-width: 809.98px) {
+  .rsvp-paper-heading {
+    font-size: 19px !important;
+    letter-spacing: 0.1em !important;
+  }
+}
+
+.rsvp-paper-sub {
+  font-family: 'Yaldevi', sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.04em !important;
+  color: #7b4e72 !important;
+  margin: 0 0 6px 0 !important;
+}
+
+@media (max-width: 809.98px) {
+  .rsvp-paper-sub {
+    font-size: 11px !important;
+    margin: 0 0 6px 0 !important;
+  }
+}
+
+.rsvp-ornament {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #8c5a82 !important;
+  margin: 2px 0 8px !important;
+  opacity: 0.85 !important;
+}
+
+.rsvp-ornament svg {
+  width: 32px !important;
+  height: 32px !important;
+}
+
+@media (max-width: 809.98px) {
+  .rsvp-ornament svg {
+    width: 26px !important;
+    height: 26px !important;
+  }
+}
+
+.rsvp-whatsapp-badge {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 7px !important;
+  background: #25D366 !important;
+  color: #ffffff !important;
+  font-family: 'Yaldevi', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  padding: 7px 15px !important;
+  border-radius: 24px !important;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.42) !important;
+  margin-top: 4px !important;
+  margin-bottom: 0 !important;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+@media (max-width: 809.98px) {
+  .rsvp-whatsapp-badge {
+    font-size: 11px !important;
+    padding: 6px 12px !important;
+    gap: 5px !important;
+    margin-top: 4px !important;
+  }
+}
+
+.rsvp-whatsapp-badge:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.58) !important;
+}
+
+.rsvp-wa-icon {
+  width: 16px !important;
+  height: 16px !important;
+  fill: currentColor !important;
+  display: block !important;
+}
+
+/* Layer 3: Envelope Upper (Front pocket with flap and floral seal) */
+.rsvp-envelope-upper {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 938 / 1290 !important;
+  z-index: 3 !important;
+  cursor: pointer !important;
+  display: block !important;
+}
+
+.rsvp-envelope-upper img {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.2)) !important;
+}
+
+
+/* ==========================================================================
+   Shivani & Lakshman Photo Gallery / Slideshow (Matching Image Format)
+   ========================================================================== */
+
+/* 1. Remove the ornate yellow mirror frame entirely */
+.framer-TbqMA .framer-4rlk9i,
+[data-framer-name="The frame"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 2. Format the slideshow container */
+.framer-TbqMA.framer-m9xna6,
+.framer-TbqMA.framer-v-9swqiw.framer-m9xna6 {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  height: auto !important;
+  min-height: 480px !important;
+  padding: 10px 0 20px 0 !important;
+  margin: 0 auto !important;
+  gap: 0 !important;
+  overflow: visible !important;
+}
+
+.framer-TbqMA .framer-1b8vhu9,
+.framer-TbqMA.framer-v-9swqiw .framer-1b8vhu9 {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: auto !important;
+  position: relative !important;
+  flex: unset !important;
+}
+
+/* 3. The Portrait Card (Size, border-radius 32px-36px, soft shadow) */
+.framer-TbqMA .framer-1ozbtfd-container,
+.framer-TbqMA.framer-v-9swqiw .framer-1ozbtfd-container {
+  position: relative !important;
+  top: unset !important;
+  left: unset !important;
+  right: unset !important;
+  bottom: unset !important;
+  transform: none !important;
+  margin: 0 auto 85px auto !important;
+  width: 320px !important;
+  height: 460px !important;
+  max-width: calc(100vw - 44px) !important;
+  border-radius: 32px !important;
+  overflow: hidden !important;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+  background-color: #f7f3ee !important;
+  z-index: 2 !important;
+}
+
+@media (min-width: 810px) {
+  .framer-TbqMA .framer-1ozbtfd-container,
+  .framer-TbqMA.framer-v-9swqiw .framer-1ozbtfd-container {
+    width: 420px !important;
+    height: 600px !important;
+    border-radius: 36px !important;
+    margin: 0 auto 110px auto !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18), 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  }
+}
+
+/* 4. Slides and inner images */
+.framer-TbqMA .framer-1ozbtfd-container section,
+.framer-TbqMA .framer-1ozbtfd-container section > div:first-child {
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+}
+
+.framer-TbqMA .framer-1ozbtfd-container ul {
+  display: flex !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  user-select: none !important;
+}
+
+.framer-TbqMA .framer-1ozbtfd-container li,
+.framer-TbqMA .framer-1ozbtfd-container li > div,
+.framer-TbqMA .framer-679jd,
+.framer-TbqMA .framer-sif4cl,
+.framer-TbqMA .framer-1w6qfi3,
+.framer-TbqMA .framer-1qvpcia,
+.framer-TbqMA .framer-pft7l8,
+.framer-TbqMA .framer-l15e94,
+.framer-TbqMA .framer-slide-item {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: unset !important;
+  border-radius: inherit !important;
+  overflow: hidden !important;
+  flex-shrink: 0 !important;
+}
+
+.framer-TbqMA .framer-1ozbtfd-container img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 20% !important;
+  border-radius: inherit !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.framer-TbqMA .framer-1ozbtfd-container li > div {
+  visibility: visible !important;
+}
+
+/* 5. Navigation Controls (Glass chevrons & dots) */
+.framer-TbqMA .framer--slideshow-controls {
+  position: absolute !important;
+  inset: 0 !important;
+  pointer-events: none !important;
+  z-index: 10 !important;
+}
+
+.framer-TbqMA .framer--slideshow-controls > div:first-child {
+  position: absolute !important;
+  inset: 14px !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  pointer-events: none !important;
+}
+
+.framer-TbqMA .framer--slideshow-controls > div:first-child button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 38px !important;
+  height: 38px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+  transition: transform 0.2s ease, background 0.2s ease !important;
+  padding: 0 !important;
+}
+
+.framer-TbqMA .framer--slideshow-controls > div:first-child button:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  transform: scale(1.08) !important;
+}
+
+.framer-TbqMA .framer--slideshow-controls > div:first-child button img {
+  width: 18px !important;
+  height: 18px !important;
+  object-fit: contain !important;
+}
+
+.framer-TbqMA .framer--slideshow-controls > div:last-child {
+  position: absolute !important;
+  bottom: 18px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.38) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  padding: 5px 12px !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.22) !important;
+  pointer-events: auto !important;
+  max-width: 90% !important;
+}
