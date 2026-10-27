@@ -59,6 +59,14 @@
       wrapper.className = 'rsvp-envelope-wrapper';
       wrapper.id = 'rsvpEnvelope';
       wrapper.innerHTML = createEnvelopeHTML();
+      wrapper.addEventListener('click', function(e) {
+        if (!e.target.closest('a')) {
+          var card = this.querySelector('#rsvpPaperCard');
+          if (card) {
+            card.click();
+          }
+        }
+      });
 
       var stack = rsvpSection.querySelector('.framer-12faent');
       if (stack) {
@@ -66,6 +74,16 @@
       } else {
         rsvpSection.appendChild(wrapper);
       }
+    } else if (!existing.dataset.bound) {
+      existing.dataset.bound = 'true';
+      existing.addEventListener('click', function(e) {
+        if (!e.target.closest('a')) {
+          var card = this.querySelector('#rsvpPaperCard');
+          if (card) {
+            card.click();
+          }
+        }
+      });
     }
   }
 

@@ -23,14 +23,14 @@
 
   function ensureCabinet() {
     // Update all Instagram links and shutter buttons
-    var shutterLinks = document.querySelectorAll('.framer-b3ixcs-container a, [data-framer-name="Section 3"]');
+    var shutterLinks = document.querySelectorAll('.framer-b3ixcs-container a, a[data-framer-name="Section 3"]');
     for (var i = 0; i < shutterLinks.length; i++) {
       var a = shutterLinks[i];
       if (a.getAttribute('href') !== INSTA_URL) {
         a.setAttribute('href', INSTA_URL);
-        a.setAttribute('target', '_blank');
-        a.setAttribute('rel', 'noopener noreferrer');
       }
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
     }
 
     var textWrappers = document.querySelectorAll('.framer-1tv2weq');
@@ -39,9 +39,30 @@
       if (!tw.dataset.linked) {
         tw.dataset.linked = 'true';
         tw.style.cursor = 'pointer';
+        var innerA = tw.querySelector('a');
+        if (!innerA) {
+          innerA = document.createElement('a');
+          innerA.href = INSTA_URL;
+          innerA.target = '_blank';
+          innerA.rel = 'noopener noreferrer';
+          innerA.style.textDecoration = 'none';
+          innerA.style.color = 'inherit';
+          innerA.style.display = 'block';
+          innerA.style.cursor = 'pointer';
+          while (tw.firstChild) {
+            innerA.appendChild(tw.firstChild);
+          }
+          tw.appendChild(innerA);
+        } else {
+          innerA.setAttribute('href', INSTA_URL);
+          innerA.setAttribute('target', '_blank');
+          innerA.setAttribute('rel', 'noopener noreferrer');
+        }
         tw.addEventListener('click', function(e) {
-          e.preventDefault();
-          window.open(INSTA_URL, '_blank', 'noopener,noreferrer');
+          var link = this.querySelector('a');
+          if (link && e.target !== link && !link.contains(e.target)) {
+            link.click();
+          }
         });
       }
     }

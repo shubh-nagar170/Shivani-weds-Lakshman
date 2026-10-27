@@ -692,7 +692,7 @@ body,
   height: auto !important;
   aspect-ratio: 938 / 1290 !important;
   z-index: 3 !important;
-  cursor: pointer !important;
+  pointer-events: none !important;
   display: block !important;
 }
 
@@ -890,4 +890,42 @@ body,
   border: 1px solid rgba(255, 255, 255, 0.22) !important;
   pointer-events: auto !important;
   max-width: 90% !important;
+}
+
+/* ==========================================================================
+   Mobile Interactivity & Link Fixes (WhatsApp & Instagram)
+   ========================================================================== */
+@media (max-width: 809.98px) {
+  .framer-A4SHU .framer-1lew6c4,
+  .framer-A4SHU .framer-1dnsgee,
+  .framer-A4SHU .framer-rsjser,
+  .framer-A4SHU .framer-12faent,
+  .framer-A4SHU .framer-ajbebj,
+  .framer-A4SHU .framer-1tv2weq,
+  .framer-A4SHU .framer-b3ixcs-container,
+  .framer-A4SHU .framer-b3ixcs-container a,
+  .rsvp-envelope-wrapper,
+  .rsvp-paper-card,
+  .rsvp-whatsapp-badge,
+  .insta-cabinet-wrapper {
+    pointer-events: auto !important;
+  }
+}
+
+.rsvp-envelope-wrapper,
+.rsvp-paper-card,
+.rsvp-whatsapp-badge,
+.insta-cabinet-wrapper,
+.framer-1tv2weq a,
+.framer-b3ixcs-container a {
+  pointer-events: auto !important;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0.08);
+  touch-action: manipulation;
+}
+
+/* Ensure purely decorative layers never block taps */
+.rsvp-envelope-inner,
+.rsvp-paper-bg,
+.insta-cabinet-wrapper .framer-jvi5bt {
+  pointer-events: none !important;
 }
