@@ -64,7 +64,7 @@ const server = http.createServer((req, res) => {
 
       fs.createReadStream(filePath, { start, end }).pipe(res);
     } else {
-      const isCode = ext === '.html' || ext === '.js' || ext === '.mjs';
+      const isCode = ext === '.html' || ext === '.js' || ext === '.mjs' || ext === '.css';
       res.writeHead(200, {
         'Content-Type': contentType,
         'Content-Length': totalSize,

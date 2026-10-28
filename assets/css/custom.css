@@ -805,12 +805,22 @@ body,
 .framer-TbqMA .framer-pft7l8,
 .framer-TbqMA .framer-l15e94,
 .framer-TbqMA .framer-slide-item {
+  position: relative !important;
   width: 100% !important;
   height: 100% !important;
   aspect-ratio: unset !important;
   border-radius: inherit !important;
   overflow: hidden !important;
   flex-shrink: 0 !important;
+}
+
+.framer-TbqMA .framer-1ozbtfd-container li > div > div[data-framer-background-image-wrapper="true"] {
+  position: absolute !important;
+  inset: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .framer-TbqMA .framer-1ozbtfd-container img {
