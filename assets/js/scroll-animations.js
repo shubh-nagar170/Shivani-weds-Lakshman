@@ -77,6 +77,9 @@
     : { matches: false };
 
   var rafPending = false;
+  var introStartTime = (typeof window !== 'undefined' && window.__heroIntroStartTime) ? window.__heroIntroStartTime : null;
+  var INTRO_DURATION = 2400; // 2.4 seconds entrance float on initial load
+  var titleIntroCompleted = false;
 
   function getLanternSpec(el) {
     var appearId = el.getAttribute('data-framer-appear-id');
@@ -96,7 +99,7 @@
     return { speed: 50, initRot: 15, animRot: 5, sway: 10 };
   }
 
-  function updateScrollAnimations() {
+  function updateScrollAnimations(timestamp) {
     rafPending = false;
     var scrollY = window.scrollY || window.pageYOffset || 0;
     var vh = window.innerHeight || 800;
@@ -104,6 +107,89 @@
     var isTablet = vw >= 810 && vw < 1200;
     var isMobile = vw < 810;
     var isReduced = Boolean(reducedMotionQuery && reducedMotionQuery.matches);
+
+    // Initial load entrance calculation
+    var introProgress = 1;
+    var introFactor = 0;
+    var elapsed = 0;
+    if (!isReduced) {
+      if (introStartTime === null) {
+        introStartTime = (typeof timestamp === 'number' && timestamp > 0) ? timestamp : performance.now();
+      }
+      var nowTime = (typeof timestamp === 'number' && timestamp > 0) ? timestamp : performance.now();
+      elapsed = nowTime - introStartTime;
+      introProgress = clamp(elapsed / INTRO_DURATION, 0, 1);
+      // Buttery smooth quintic ease-out: 1 - (1 - p)^4
+      var ease = 1 - Math.pow(1 - introProgress, 4);
+      introFactor = 1 - ease; // 1 down to 0
+    }
+
+    // A. Title Words ("Shivani weds lakshman") Single-Play Entrance
+    var baseTitleDistance = isMobile ? 240 : 350;
+
+    if (isReduced) {
+      if (!titleIntroCompleted) {
+        titleIntroCompleted = true;
+        if (typeof document !== 'undefined' && document.documentElement) {
+          document.documentElement.classList.remove('hero-intro-running');
+          document.documentElement.style.removeProperty('--hero-title-y');
+          document.documentElement.style.removeProperty('--hero-title-opacity');
+        }
+      }
+    } else if (!titleIntroCompleted) {
+      var wordConfigs = [
+        { selector: '.framer-A4SHU .framer-1o4ssdi', delay: 120, rot: isMobile ? 5 : 6 },
+        { selector: '.framer-A4SHU .framer-1hhl4i8', delay: 280, rot: 0 },
+        { selector: '.framer-A4SHU .framer-1gkd8xc', delay: 440, rot: isMobile ? -5 : -6 }
+      ];
+
+      var wordsDone = true;
+      for (var w = 0; w < wordConfigs.length; w++) {
+        var wCfg = wordConfigs[w];
+        var wElapsed = elapsed - wCfg.delay;
+        var p = clamp(wElapsed / 1400, 0, 1);
+        if (p < 1) wordsDone = false;
+
+        var easeW = 1 - Math.pow(1 - p, 4);
+        var yW = (1 - easeW) * baseTitleDistance;
+        var rotW = (1 - easeW) * wCfg.rot;
+        var scaleW = 0.92 + (easeW * 0.08);
+        var opW = wElapsed <= 0 ? 0 : clamp(wElapsed / 350, 0, 1);
+
+        var wEls = document.querySelectorAll(wCfg.selector);
+        for (var we = 0; we < wEls.length; we++) {
+          wEls[we].style.setProperty('--hero-title-y', yW.toFixed(2) + 'px');
+          wEls[we].style.setProperty('--hero-title-rot', rotW.toFixed(2) + 'deg');
+          wEls[we].style.setProperty('--hero-title-scale', scaleW.toFixed(3));
+          wEls[we].style.setProperty('--hero-title-opacity', opW.toFixed(2));
+        }
+      }
+
+      if (wordsDone && introProgress >= 1) {
+        titleIntroCompleted = true;
+        if (typeof document !== 'undefined' && document.documentElement) {
+          document.documentElement.classList.remove('hero-intro-running');
+          document.documentElement.style.removeProperty('--hero-title-y');
+          document.documentElement.style.removeProperty('--hero-title-opacity');
+        }
+        for (var w2 = 0; w2 < wordConfigs.length; w2++) {
+          var wElsFinal = document.querySelectorAll(wordConfigs[w2].selector);
+          for (var we2 = 0; we2 < wElsFinal.length; we2++) {
+            wElsFinal[we2].style.removeProperty('--hero-title-y');
+            wElsFinal[we2].style.removeProperty('--hero-title-rot');
+            wElsFinal[we2].style.removeProperty('--hero-title-scale');
+            wElsFinal[we2].style.removeProperty('--hero-title-opacity');
+          }
+        }
+      }
+    } else {
+      // Once intro is complete, guarantee hero-intro-running is cleared and no styles linger
+      if (typeof document !== 'undefined' && document.documentElement && document.documentElement.classList.contains('hero-intro-running')) {
+        document.documentElement.classList.remove('hero-intro-running');
+        document.documentElement.style.removeProperty('--hero-title-y');
+        document.documentElement.style.removeProperty('--hero-title-opacity');
+      }
+    }
 
     // 1. Update all Sky Lanterns in Section 1
     var lanterns = document.querySelectorAll('.framer-A4SHU [data-framer-name="Lantern"]');
@@ -120,12 +206,20 @@
         continue;
       }
 
-      // Vertical upward travel synchronized with scrollY and individual parallax speed
-      var dy = -scrollY * (spec.speed / 100) * 0.68;
+      // Vertical upward travel: scroll parallax + smooth intro upward float
+      // Base rise distance varies per lantern speed and stagger index to give multi-layer atmospheric depth
+      var introOffset = introFactor * (170 + (spec.speed * 1.8) + ((i % 7) * 14));
+      var dy = -scrollY * (spec.speed / 100) * 0.68 + introOffset;
+
       // Subtle horizontal drift along the lantern's rising trajectory (0 at scrollY = 0)
-      var dx = Math.sin((scrollY / 550) + (i * 0.7)) * spec.sway * clamp(scrollY / 250, 0, 1);
-      // Smooth rotation progression tied to scroll
-      var rot = spec.animRot + (spec.initRot - spec.animRot) * rotProgress;
+      var scrollSway = Math.sin((scrollY / 550) + (i * 0.7)) * spec.sway * clamp(scrollY / 250, 0, 1);
+      // Gentle natural swaying as the lantern ascends during load
+      var introSway = Math.sin((introProgress * Math.PI) + (i * 0.8)) * (spec.sway * 0.45) * introFactor;
+      var dx = scrollSway + introSway;
+
+      // Smooth rotation progression: combines intro tilt settling and scroll rotation
+      var baseRot = spec.animRot + (spec.initRot - spec.animRot) * rotProgress;
+      var rot = baseRot + (spec.initRot - spec.animRot) * introFactor * 0.65;
 
       lantern.style.setProperty('--lantern-x', dx.toFixed(2) + 'px');
       lantern.style.setProperty('--lantern-y', dy.toFixed(2) + 'px');
@@ -210,6 +304,14 @@
         var ctaP = clamp((vh * 0.75 - ctaRect.top) / (vh * 0.85), 0, 1);
         var ctaY = ctaP * ctaCfg.maxShift;
         ctaEl.style.setProperty('--cta-y', ctaY.toFixed(2) + 'px');
+      }
+    }
+
+    // Keep animating while the initial intro float is active
+    if (!isReduced && (!titleIntroCompleted || introProgress < 1)) {
+      if (!rafPending) {
+        rafPending = true;
+        window.requestAnimationFrame(updateScrollAnimations);
       }
     }
   }

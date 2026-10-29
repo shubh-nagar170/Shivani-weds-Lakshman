@@ -52,8 +52,13 @@ body,
   --border-color: rgb(107, 86, 46) !important;
 }
 
-/* 5. Keep Main Wedding Couple Illustration Stationary on Load */
-.framer-A4SHU .framer-wva5fq,
+/* 5. Hero Wedding Couple Illustration & Single-Play Entrance Transform */
+.framer-A4SHU .framer-wva5fq {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Default stationary resting state for Title Words (permanent after single entrance) */
 .framer-A4SHU .framer-1o4ssdi,
 .framer-A4SHU .framer-1hhl4i8,
 .framer-A4SHU .framer-1gkd8xc {
@@ -61,10 +66,33 @@ body,
   opacity: 1 !important;
 }
 
-/* 6. Scroll-Driven Animation Rules */
+/* Single-play entrance active only on initial website opening */
+html.hero-intro-running .framer-A4SHU .framer-1o4ssdi,
+html.hero-intro-running .framer-A4SHU .framer-1hhl4i8,
+html.hero-intro-running .framer-A4SHU .framer-1gkd8xc {
+  transform: translate3d(0, var(--hero-title-y, 0px), 0) rotate(var(--hero-title-rot, 0deg)) scale(var(--hero-title-scale, 1)) !important;
+  opacity: var(--hero-title-opacity, 1) !important;
+  will-change: transform, opacity;
+}
+
+/* Soft luminous fade-in for rising sky lanterns on initial load */
+@keyframes lanternGlowFade {
+  0% {
+    opacity: 0.15;
+  }
+  35% {
+    opacity: 0.85;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 6. Scroll-Driven & Entrance Animation Rules */
 .framer-A4SHU [data-framer-name="Lantern"] {
+  animation: lanternGlowFade 1.8s ease-out both;
   transform: translate3d(var(--lantern-x, 0px), var(--lantern-y, 0px), 0px) rotate(var(--lantern-rot, 0deg)) !important;
-  will-change: transform;
+  will-change: transform, opacity;
   backface-visibility: hidden;
 }
 
@@ -84,7 +112,15 @@ body,
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html.hero-intro-running .framer-A4SHU .framer-1o4ssdi,
+  html.hero-intro-running .framer-A4SHU .framer-1hhl4i8,
+  html.hero-intro-running .framer-A4SHU .framer-1gkd8xc {
+    transform: none !important;
+    opacity: 1 !important;
+  }
   .framer-A4SHU [data-framer-name="Lantern"] {
+    animation: none !important;
+    opacity: 1 !important;
     transform: rotate(var(--lantern-rot, 0deg)) !important;
   }
   .framer-A4SHU .framer-1okdoe3,
@@ -938,4 +974,186 @@ body,
 .rsvp-paper-bg,
 .insta-cabinet-wrapper .framer-jvi5bt {
   pointer-events: none !important;
+}
+
+/* ==========================================================================
+   Things to Know Section (Hashtag, Weather, Parking) - Perfectly Aligned
+   ========================================================================== */
+
+/* Completely hide Staff option */
+.framer-A4SHU [data-framer-name="Staff"],
+.framer-A4SHU .framer-zs2qxm-container {
+  display: none !important;
+}
+
+/* Parent container for Things to Know items */
+.framer-A4SHU .framer-1q28ybr {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  gap: 50px !important;
+  width: 100% !important;
+  max-width: 980px !important;
+  margin: 0 auto !important;
+  height: auto !important;
+  min-height: auto !important;
+  padding: 40px 20px 140px !important;
+}
+
+/* Equal width & baseline alignment for the 3 remaining cards */
+.framer-A4SHU .framer-1wq5nfy-container,
+.framer-A4SHU .framer-17sez5h-container,
+.framer-A4SHU .framer-165ckrq-container {
+  flex: 1 1 240px !important;
+  max-width: 280px !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* Inner card wrapper */
+.framer-A4SHU .framer-5gCIX.framer-1ar8i4h {
+  width: 100% !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
+}
+
+.framer-A4SHU .framer-5gCIX .framer-1x8nr7w {
+  width: 100% !important;
+  max-width: 260px !important;
+  height: auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+}
+
+/* Uniform icon height so all titles sit on the exact same horizontal baseline */
+.framer-A4SHU .framer-5gCIX .framer-f4gc8b {
+  width: 100% !important;
+  height: 76px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-bottom: 2px !important;
+}
+
+.framer-A4SHU .framer-5gCIX .framer-1jzdh0c {
+  width: 66px !important;
+  height: 66px !important;
+  max-width: 66px !important;
+  max-height: 66px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.framer-A4SHU .framer-5gCIX .framer-1jzdh0c img {
+  object-fit: contain !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
+
+/* Card titles ("HASHTAG", "WEATHER", "PARKING") */
+.framer-A4SHU .framer-5gCIX .framer-v0c8nb {
+  width: 100% !important;
+  height: auto !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+.framer-A4SHU .framer-5gCIX .framer-v0c8nb .framer-text {
+  font-family: 'Aboreto', sans-serif !important;
+  font-size: 26px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: rgb(105, 107, 54) !important;
+  --extracted-r6o4lv: rgb(105, 107, 54) !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* Card descriptions */
+.framer-A4SHU .framer-5gCIX .framer-1ilsgfh {
+  width: 100% !important;
+  max-width: 250px !important;
+  height: auto !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+.framer-A4SHU .framer-5gCIX .framer-1ilsgfh .framer-text {
+  font-family: 'Yaldevi', 'Yaldevi Placeholder', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.5 !important;
+  color: rgb(105, 107, 54) !important;
+  --extracted-r6o4lv: rgb(105, 107, 54) !important;
+  text-align: center !important;
+  margin: 0 !important;
+}
+
+/* Tablet responsive layout (810px - 1199.98px) */
+@media (min-width: 810px) and (max-width: 1199.98px) {
+  .framer-A4SHU .framer-1q28ybr {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: center !important;
+    gap: 32px !important;
+    max-width: 760px !important;
+    padding: 30px 20px 120px !important;
+  }
+}
+
+/* Mobile responsive layout (< 810px) */
+@media (max-width: 809.98px) {
+  .framer-A4SHU .framer-1q28ybr {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 40px !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
+    height: auto !important;
+    min-height: auto !important;
+    padding: 20px 20px 90px !important;
+  }
+
+  .framer-A4SHU .framer-1iqfo5o {
+    height: auto !important;
+    min-height: auto !important;
+  }
+
+  .framer-A4SHU .framer-5gCIX.framer-v-11ep14p.framer-1ar8i4h {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .framer-A4SHU .framer-5gCIX.framer-v-11ep14p .framer-v0c8nb {
+    width: 100% !important;
+  }
+
+  .framer-A4SHU .framer-5gCIX.framer-v-11ep14p .framer-1ilsgfh {
+    width: 100% !important;
+    max-width: 280px !important;
+  }
+}
+
+/* See the route CTA button clickability & pointer events */
+.framer-A4SHU .framer-c1ybed-container,
+.framer-A4SHU .framer-c1ybed-container a,
+.framer-A4SHU .framer-ivpnos-container a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
 }
