@@ -328,10 +328,58 @@
   window.addEventListener('DOMContentLoaded', updateScrollAnimations);
   window.addEventListener('load', updateScrollAnimations);
 
+  // 4. Reliable "See the route" / Location Button Activation & Sync
+  var GOOGLE_MAPS_LOCATION_URL = 'https://maps.app.goo.gl/NVLHXQBPSNmYs8Bx5?g_st=awb';
+
+  function handleRouteButtonActivation(e) {
+    var routeTarget = e.target.closest(
+      '.framer-da9rad, .framer-1hdt68x, .framer-1drtq1g, .framer-udt5ln, [data-framer-name="Map link"], [data-framer-name="Location"], .framer-styles-preset-s3v1ib'
+    );
+    if (!routeTarget) return;
+
+    var text = (routeTarget.textContent || '').trim().toLowerCase();
+    if (!text.includes('see the route') && !text.includes('map link')) return;
+
+    var anchor = routeTarget.tagName === 'A' ? routeTarget : routeTarget.querySelector('a');
+    if (anchor) {
+      anchor.href = GOOGLE_MAPS_LOCATION_URL;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener noreferrer';
+    }
+
+    // If click was on button container outside the direct anchor or anchor click is prevented, open directly
+    if (e.target !== anchor && (!anchor || !anchor.contains(e.target))) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(GOOGLE_MAPS_LOCATION_URL, '_blank', 'noopener,noreferrer');
+    }
+  }
+
+  // Use capture phase to intercept before React or Framer motion handlers
+  window.addEventListener('click', handleRouteButtonActivation, true);
+
+  function syncRouteButtonLinks() {
+    var links = document.querySelectorAll('a');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i];
+      if ((a.textContent || '').toLowerCase().includes('see the route')) {
+        if (a.getAttribute('href') !== GOOGLE_MAPS_LOCATION_URL) {
+          a.setAttribute('href', GOOGLE_MAPS_LOCATION_URL);
+        }
+        a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener noreferrer');
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', syncRouteButtonLinks);
+  window.addEventListener('load', syncRouteButtonLinks);
+
   // Observe DOM mutations during React hydration / breakpoint variant swaps so styles stay in sync immediately
   if (typeof MutationObserver !== 'undefined') {
     var observer = new MutationObserver(function () {
       requestTick();
+      syncRouteButtonLinks();
     });
     if (document.documentElement) {
       observer.observe(document.documentElement, { childList: true, subtree: true });
